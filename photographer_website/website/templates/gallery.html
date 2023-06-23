@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <title>Gallery</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/gallery_styles.css' %}"/>
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block viewport %}
+    <div id="photo_frame">
+
+               <div class="slider">
+                   <div id="left"></div>
+                   <div id="right"></div>
+               </div>
+
+               <img style="height: 100%;" src="{% static 'photos/isayas.jpg' %}">
+           </div>
+{% endblock %}
