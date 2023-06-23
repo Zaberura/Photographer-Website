@@ -2,14 +2,17 @@
 head, body {
     min-height: 95vh;
     background-color: #FDFDFB;
-    font-size: 1em;
-    font-weight: 100;
-    letter-spacing: 0.05em;
+    font-size: 100%;
     color: #353535;
     font-family: "MS Sans Serif", Arial, sans-serif;
 }
 
 a:link {
+    text-decoration: none;
+    color: #353535;
+}
+
+a div {
     text-decoration: none;
     color: #353535;
 }
@@ -25,67 +28,10 @@ a:link {
 
 /* RIGHT SIDE, OPEN PAGE'S FRAME */
 #viewport{
-    flex: 9 0 60vw;
+    flex-grow: 9;
     min-width: 500px;
-    margin: auto 3.4em auto ;
-    padding: 4em 0 13.8em;
-}
-
-/* CAROUSEL */
-
-.carousel {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-container {
-  max-width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  width: 300px;
-  margin-right: 90px;
-}
-
-.carousel-item img {
-  margin-bottom: 1em;
-  width: 100%;
-  height: auto;
-}
-
-.carousel-item div {
-  text-align: center;
-  margin-left: -0.3em;
-  margin-bottom: 0.3em;
-  font-size: 0.7em;
-}
-
-/* SEARCH BAR */
-
-.search-container {
-  position: fixed;
-  top: 1.3em;
-  right: 3.5em;
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  padding: 8px;
-  font-size: 0.8em;
-  font-weight: 100;
-  letter-spacing: 0.05em;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  margin-right: 8px;
-  background: #fff4f3;
+    padding: 10px;
+    margin: 10px;
 }
 
 /* MAIN FRAME'S INSIDES */
@@ -110,7 +56,7 @@ a:link {
 }
 
 /* WIDTH IS TO BE SET IN JS/DJANGO */
-/*
+
 .slider{
     position: absolute;
     display: flex;
@@ -128,26 +74,17 @@ a:link {
     width: 50%;
     cursor: e-resize;
 }
-*/
+
 
 
 /* LEFT SIDE, NAVIGATION BAR */
-#navbar-container{
-    /*margin-top: 12em;
+#navbar{
+    margin-top: 12em;
     margin-bottom: 4em;
     margin-right: 0.65em;
     margin-left: 4em;
-    */
-
-    flex-: 1 0 auto;
-    min-width: 120px;
-    padding: 4em 3.4em 13.8em;
-
-    margin: auto;
-
-}
-
-#navbar{
+    flex-grow: 1;
+    min-width: 100px;
 
 }
 
@@ -168,6 +105,7 @@ a:link {
     font-size: 0.9em;
     font-weight: 100;
     letter-spacing: 0.13em;
+    color: #353535;
 }
 
 #flag{
@@ -175,3 +113,4 @@ a:link {
     margin-top: 1.8em;
     width: 30px;
 }
+

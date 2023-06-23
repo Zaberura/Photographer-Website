@@ -1,46 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Gallery</title>
-    <link rel="stylesheet" href="contact_styles.css" type="text/css" />
+{% block head %}
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
+{% endblock %}
 
-</head>
-
-<body>
-    <div id="wrapper">
-        <div id="navbar">
-            <!-- TO BE BLOCKED OUT -->
-
-            <a href="#">
-                <div id="logo">ZABEREZHNYI YURII</div>
-            </a>
-
-            <a href="#">
-                <div class="nav_item active_nav_item">gallery</div>
-            </a>
-            <a href="#">
-                <div class="nav_item">projects</div>
-            </a>
-            <a href="#">
-                <div class="nav_item">about</div>
-            </a>
-            <a href="#">
-                <div class="nav_item">store</div>
-            </a>
-            <a href="#">
-                <div class="nav_item">contact</div>
-            </a>
-
-            <a><img id="flag" src="src/flag_ua.png"></a>
-
-            <!-- TO BE BLOCKED OUT (END)-->
-        </div>
-        <div id="viewport">
-            <!-- TO BE BLOCKED OUT -->
-            <!-- FOR IVAN TO REMOVE -->
-            <div class="contact_wrapper">
+{% block viewport %}
+    <div class="contact_wrapper">
                 <div class="top">
                     <div class="form_wrapper">
                         <div class="form_caption">CONTACT</div>
@@ -63,16 +29,10 @@
                         <p>EMAIL
                             <a href="#">ZABERURA@GMAIL.COM</a>
                         </p>
-                        <a href="#"><img src="./src/instagram.png"></a>
-                        <a href="#"><img src="./src/behance.png"></a>
-                        <a href="#"><img src="./src/youtube.png"></a>
+                        <a href="#"><img src="{{ url_for('static', filename='src/instagram.png') }}"></a>
+                        <a href="#"><img src="{{ url_for('static', filename='src/behance.png') }}"></a>
+                        <a href="#"><img src="{{ url_for('static', filename='src/youtube.png') }}"></a>
                     </div>
                 </div>
             </div>
-            <!-- FOR IVAN TO REMOVE (END)-->
-            <!-- TO BE BLOCKED OUT (END)-->
-        </div>
-    </div>
-</body>
-
-</html>
+{% endblock %}

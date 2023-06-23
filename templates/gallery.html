@@ -1,65 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+
+{% block head %}
     <title>Gallery</title>
-    <link rel="stylesheet" href="gallery_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-</head>
-<body>
-   <div id="wrapper">
-       <div id="navbar">
-           <!-- TO BE BLOCKED OUT -->
+{% endblock %}
 
-           <a href="#">
-               <div id="logo">ZABEREZHNYI YURII</div>
-           </a>
+{% block viewport %}
+    <div id="photo_frame">
 
-           <a href="#">
-               <div class="nav_item active_nav_item">gallery</div>
-           </a>
-           <a href="#">
-               <div class="nav_item">projects</div>
-           </a>
-           <a href="#">
-               <div class="nav_item">about</div>
-           </a>
-           <a href="#">
-               <div class="nav_item">store</div>
-           </a>
-           <a href="#">
-               <div class="nav_item">contact</div>
-           </a>
+        <div id="slider">
+            <div id="slider_left"></div>
+            <div id="slider_right"></div>
+        </div>
 
-           <a><img id="flag" src="src/flag_ua.png"></a>
 
-           <!-- TO BE BLOCKED OUT (END)-->
-       </div>
-       <div id="viewport">
-           <!-- TO BE BLOCKED OUT -->
-           <!-- FOR IVAN TO REMOVE -->
-           <div id="photo_frame">
+        <img style="height: 100%;" src="{{ urls[0] }}" id="image">
 
-               <div class="slider">
-                   <div id="left"></div>
-                   <div id="right"></div>
-               </div>
 
-               <img style="height: 100%;" src="photos/isayas.jpg">
+        <script>copyDimensions();</script>
 
-               <div class="print_download_button">
-                   <a href="#">
-                        <div>DOWNLOAD</div>
-                   </a>
-                   <div>&nbsp|&nbsp</div>
-                   <a href="#">
-                       <div>PRINT</div>
-                   </a>
-               </div>
-           </div>
-           <!-- FOR IVAN TO REMOVE (END)-->
-           <!-- TO BE BLOCKED OUT (END)-->
-       </div>
-   </div>
-</body>
-</html>
+        <div class="print_download_button">
+            <a href="#">
+                <div>DOWNLOAD</div>
+            </a>
+            <div>&nbsp|&nbsp</div>
+            <a href="#">
+                <div>PRINT</div>
+            </a>
+        </div>
+
+        <script>
+
+            const urls = {{ urls|tojson }} ;
+            imageIndex = 0;
+
+            document.getElementById("slider_right").addEventListener("click", function() {
+
+            if(imageIndex == urls.length){ imageIndex = 0; }
+            imageIndex++;
+            var image = document.getElementById("image");
+            image.src = urls[imageIndex];
+            });
+
+            document.getElementById("slider_left").addEventListener("click", function() {
+
+            if(imageIndex == 0){ imageIndex = urls.length; }
+            imageIndex--;
+            var image = document.getElementById("image");
+            image.src = urls[imageIndex];
+            });
+        </script>
+    </div>
+
+
+{% endblock %}
