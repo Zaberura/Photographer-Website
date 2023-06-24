@@ -77,19 +77,48 @@ a div, p {
 
 
 /* GALLERY */
-#photo_frame{
+#container{
     height: 70vh;
     max-width: 72vw;
     padding: 0.9em;
     display: inline-block
 }
 
+#photo_container{
+    position: relative;
+    margin-left: 2em;
+    height: 100%;
+}
+
+#photo_container img{
+    position: absolute;
+    height: 100%;
+    transition: opacity 0.9s ease-in-out;
+
+}
+
+#image{
+    z-index: 100;
+    opacity: 1;
+}
+
+#image_2, #image_3{
+    z-index: 99;
+    opacity: 0;
+}
+
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
 #slider{
     position: absolute;
     display: flex;
     justify-content: center;
-    height: 70vh;
-    width: 72vw;
+    z-index: 200;
 }
 
 #slider #slider_left{

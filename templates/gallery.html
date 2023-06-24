@@ -3,12 +3,12 @@
 {% block head %}
     <title>Gallery</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 
 {% endblock %}
 
 {% block viewport %}
-    <div id="photo_frame">
+    <div id="container">
 
         <div id="slider">
             <div id="slider_left"></div>
@@ -16,10 +16,15 @@
         </div>
 
 
-        <img style="height: 100%;" src="{{ urls[0] }}" id="image">
 
 
-        <script>copyDimensions();</script>
+        <div id="photo_container">
+            <img style="height: 100%;" src="{{ urls[0] }}" id="image">
+            <img style="height: 100%;" src="{{ urls[1] }}" id="image_2">
+            <img style="height: 100%;" src="{{ urls|last }}" id="image_3">
+        </div>
+
+
 
         <div class="print_download_button">
             <a href="#">
@@ -31,27 +36,10 @@
             </a>
         </div>
 
-        <script>
+        <script> const urls = {{ urls|tojson }} ; </script>
+        <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
 
-            const urls = {{ urls|tojson }} ;
-            imageIndex = 0;
 
-            document.getElementById("slider_right").addEventListener("click", function() {
-
-            if(imageIndex == urls.length){ imageIndex = 0; }
-            imageIndex++;
-            var image = document.getElementById("image");
-            image.src = urls[imageIndex];
-            });
-
-            document.getElementById("slider_left").addEventListener("click", function() {
-
-            if(imageIndex == 0){ imageIndex = urls.length; }
-            imageIndex--;
-            var image = document.getElementById("image");
-            image.src = urls[imageIndex];
-            });
-        </script>
     </div>
 
 
