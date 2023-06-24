@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Admin</title>
+{% endblock %}
+
+{% block viewport %}
+
+    <form action = "/admin" method = "POST">
+        <p>Enter Url:</p>
+        <input type = "text" name = "url"/>
+        </br>
+        <input type = "text" name = "project"/>
+        </br>
+        <input type = "submit" value = "Proceed" />
+    </form>
+
+{% endblock %}

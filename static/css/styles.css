@@ -217,16 +217,17 @@ a div, p {
 
 /* PROJECTS */
 
-.carousel {
+.carousel_container {
+  margin: 3.5em 2em 0;
   max-width: 100%;
   overflow-x: auto;
 }
 
-.carousel::-webkit-scrollbar {
+.carousel_container::-webkit-scrollbar {
   display: none;
 }
 
-.carousel-container {
+.carousel {
   max-width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -256,7 +257,7 @@ a div, p {
 .search-container {
   position: fixed;
   top: 1.3em;
-  right: 3.5em;
+  right: 5.4em;
   display: flex;
   align-items: center;
 }

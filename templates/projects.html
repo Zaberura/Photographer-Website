@@ -2,7 +2,6 @@
 
 {% block head %}
     <title>Projects</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block viewport %}
@@ -12,8 +11,8 @@
               placeholder="Search..." onkeydown="handleKeyPress(event)">
     </div>
 
-    <div class="carousel">
-       <div class="carousel-container">
+    <div class="carousel_container">
+       <div class="carousel">
            <div class="carousel-item">
                <img src="photos/isayas.jpg">
                <div>PROJECT'S ORIGINAL NAME</div>
@@ -46,5 +45,5 @@
        </div>
     </div>
 
-    <script src="{{ url_for('static', 'js/projects.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/projects.js') }}"></script>
 {% endblock %}

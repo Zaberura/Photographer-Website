@@ -1,7 +1,7 @@
 // Carousel
 
-const carousel = document.querySelector(".carousel");
-const carouselContainer = carousel.querySelector(".carousel-container");
+const carousel = document.querySelector(".carousel_container");
+const carouselContainer = carousel.querySelector(".carousel");
 const carouselItems = carousel.querySelectorAll(".carousel-item");
 
 const cloneItems = Array.from(carouselItems).map(item => item.cloneNode(true));
