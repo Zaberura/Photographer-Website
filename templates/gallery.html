@@ -3,11 +3,10 @@
 {% block head %}
     <title>Gallery</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
-
-
 {% endblock %}
 
 {% block viewport %}
+
     <div id="container">
 
         <div id="slider">
@@ -15,16 +14,11 @@
             <div id="slider_right"></div>
         </div>
 
-
-
-
         <div id="photo_container">
-            <img style="height: 100%;" src="{{ urls[0] }}" id="image">
-            <img style="height: 100%;" src="{{ urls[1] }}" id="image_2">
-            <img style="height: 100%;" src="{{ urls|last }}" id="image_3">
+            {% for url in urls %}
+                <img style="height: 100%;" id="image{{ loop.index }}" class="disabled" src="{{ url }}">
+            {% endfor %}
         </div>
-
-
 
         <div class="print_download_button">
             <a href="#">
@@ -36,11 +30,9 @@
             </a>
         </div>
 
-        <script> const urls = {{ urls|tojson }} ; </script>
-        <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
-
-
     </div>
 
+<script> urls_length = {{ urls|length }} ; </script>
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
 
 {% endblock %}

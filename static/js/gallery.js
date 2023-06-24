@@ -1,89 +1,40 @@
 // Copy size of slider
 
 function copyDimensions() {
-  var sourceElement = document.getElementById("image");
+  var sourceElement = document.getElementById("image1");
   var targetElement = document.getElementById("slider");
 
   targetElement.style.width = sourceElement.offsetWidth * 1.16 + "px";
   targetElement.style.height = sourceElement.offsetHeight * 1.16 + "px";
 }
 
-function prev_img() {
 
-    if(imageIndex <= 0){ imageIndex = urls.length -1; }
-    else { imageIndex--; }
 
-    image.classList.remove('notransition');
-    image3.classList.remove('notransition');
-    image.style.opacity = "0";
-    image3.style.opacity = "1";
+document.getElementById("image1").classList.remove('disabled');
 
-    setTimeout(function() {
+//Image slider logics
 
-        image.src = urls[imageIndex];
-
-        if(imageIndex >= urls.length -1 ){
-            image2.src = urls[0];
-        } else {
-            image2.src = urls[imageIndex + 1];
-        }
-        if(imageIndex <= 0 ){
-            image3.src = urls[urls.length-1];
-        } else {
-            image3.src = urls[imageIndex -1];
-        }
-
-        image.classList.add('notransition');
-        image3.classList.add('notransition');
-        image.style.opacity = "1";
-        image3.style.opacity = "0";
-
-        //copyDimensions();
-    }, 100);
-}
-
+imageIndex = 1;
 
 function next_img() {
 
-    if(imageIndex >= urls.length -1){ imageIndex = 0; }
-        else { imageIndex++; }
+    document.getElementById("image" + imageIndex).classList.add('disabled');
+    if (imageIndex >= urls_length){ imageIndex = 0 ;}
+    document.getElementById("image" + (imageIndex + 1)).classList.remove('disabled');
 
-    image.classList.remove('notransition');
-    image2.classList.remove('notransition');
-    image.style.opacity = "0";
-    image2.style.opacity = "1";
-
-    setTimeout(function() {
-
-        image.src = urls[imageIndex];
-
-        if(imageIndex >= urls.length -1 ){
-            image2.src = urls[0];
-        } else {
-            image2.src = urls[imageIndex + 1];
-        }
-        if(imageIndex <= 0 ){
-            image3.src = urls[urls.length-1];
-        } else {
-            image3.src = urls[imageIndex - 1];
-        }
-
-        image.classList.add('notransition');
-        image2.classList.add('notransition');
-        image.style.opacity = "1";
-        image2.style.opacity = "0";
-
-        //copyDimensions();
-    }, 100);
+    imageIndex++;
 }
 
+function prev_img() {
 
-copyDimensions();
+    document.getElementById("image" + imageIndex).classList.add('disabled');
+    if (imageIndex <= 1){ imageIndex = urls_length + 1;}
+    document.getElementById("image" + (imageIndex - 1)).classList.remove('disabled');
 
-let image = document.getElementById("image");
-let image2 = document.getElementById("image_2");
-let image3 = document.getElementById("image_3");
-imageIndex = 0;
+    imageIndex--;
+}
+
+// Set Event Listeners on clicks 'n' keys
 
 document.getElementById("slider_right").addEventListener("click", next_img);
 document.getElementById("slider_left").addEventListener("click", prev_img);
@@ -97,4 +48,6 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
+
+copyDimensions();
 
