@@ -49,16 +49,17 @@ a div, p {
 
 }
 
-.nav_item{
+#navbar a{
+    display: block;
     margin-top: 1.6em;
     font-size: 0.8em;
     letter-spacing: 0.05em;
-    color: #797979;
+    color: #bbbbbb;
 
 }
 
-.active_nav_item{
-    color: #353535;
+.nav_active{
+    color: #353535 !important;
 }
 
 #logo{
