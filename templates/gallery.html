@@ -14,8 +14,8 @@
         </div>
 
         <div id="photo_container">
-            {% for url in urls %}
-                <img style="height: 100%;" id="image{{ loop.index }}" class="disabled" src="{{ url }}">
+            {% for photo in photos %}
+                <img style="height: 100%;" id="image{{ loop.index }}" class="disabled" src="{{ photo.photo_url }}">
             {% endfor %}
         </div>
 
@@ -31,7 +31,7 @@
 
     </div>
 
-<script> urls_length = {{ urls|length }} ; </script>
+<script> urls_length = {{ photos|length }} ; </script>
 <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
 
 {% endblock %}

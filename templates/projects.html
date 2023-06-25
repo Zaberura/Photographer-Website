@@ -13,35 +13,19 @@
 
     <div class="carousel_container">
        <div class="carousel">
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-               <div>PROJECT'S ORIGINAL NAME</div>
-               <div>DATE AND PLACE</div>
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
-           <div class="carousel-item">
-               <img src="photos/isayas.jpg">
-           </div>
+
+           {% for project in projects %}
+
+               <div class="carousel-item">
+                   <a href="/projects/{{ project.name }}">
+                       <img src="{{ project.cover_url }}">
+                   </a>
+                   <div>{{ project.name }}</div>
+                   <div>{{ project.city }} {{ project.season }} {{ project.year }}</div>
+               </div>
+
+           {% endfor %}
+
        </div>
     </div>
 

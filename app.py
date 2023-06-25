@@ -12,16 +12,21 @@ db.init_app(app)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        photos = Photos.query.order_by(Photos.gallery_order).all()
-        urls = [photo.photo_url for photo in photos]
-        return render_template('gallery.html', urls=urls)
+        return render_template('gallery.html', photos=get_all_photos())
     elif request.method == 'POST':
         return redirect('/')
 
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    all_projects = get_all_projects()
+    return render_template('projects.html', projects=all_projects)
+
+
+@app.route('/projects/<path:project_name>')
+def project_name(project_name):
+
+    return render_template('gallery.html', photos=get_project_photos(project_name))
 
 
 @app.route('/contact')

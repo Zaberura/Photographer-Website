@@ -13,7 +13,8 @@ class Projects(db.Model):
     year = db.Column(db.String(4), nullable=True)
     city = db.Column(db.String(64), nullable=True)
     country = db.Column(db.String(64), nullable=True)
-    photos = db.relationship('Photos', backref='project', lazy=True)
+    cover_url = db.Column(db.String(255), nullable=True)
+    photos = db.relationship('Photos', backref='project', uselist=False)
     tags = db.relationship('Tags', backref='project', lazy=True)
 
     def __repr__(self):
@@ -43,24 +44,39 @@ class Tags(db.Model):
 
 # Logics
 
+def get_all_projects():
+    return Projects.query.order_by(Projects.id).all()
+
+
+def get_all_photos():
+    return Photos.query.order_by(Photos.gallery_order).all()
+
+
+def get_project_photos(project_name):
+    project_id = Projects.query.filter_by(name=project_name).first().id
+    return Photos.query.filter_by(project_id=project_id).all()
+
+
 def add_project(name, **kwargs):
 
-    allowed_kwargs = ['season', 'year', 'city', 'country']
+    allowed_kwargs = ['season', 'year', 'city', 'country', 'cover_id']
 
     if not name == '':
         project = Projects.query.filter_by(name=name).first()
 
         if not project:
-            new_project = Projects(name=name)
+            project = Projects(name=name)
             for key, value in kwargs.items():
                 if key in allowed_kwargs:
                     setattr(project, key, value)
 
         try:
-            db.session.add(new_project)
+            db.session.add(project)
             db.session.commit()
         except:
             return 'Issue Occurred'
+
+        add_project_cover(project)
 
 
 def add_photo(url, project_name=None, **kwargs):
@@ -79,8 +95,10 @@ def add_photo(url, project_name=None, **kwargs):
             if project_name is None:
                 photo = Photos(photo_url=url, gallery_order=gallery_order)
             else:
-                project_id = Projects.query.filter_by(name=project_name).first().id
-                photo = Photos(photo_url=url, project_id=project_id, gallery_order=gallery_order)
+                project = Projects.query.filter_by(name=project_name).first()
+                photo = Photos(photo_url=url, project_id=project.id, gallery_order=gallery_order)
+                if project.cover_url is None:
+                    project.cover_url = photo.photo_url
 
             for key, value in kwargs.items():
                 if key in allowed_kwargs:
@@ -92,3 +110,9 @@ def add_photo(url, project_name=None, **kwargs):
             except:
                 return 'Issue Occurred'
 
+
+def add_project_cover(project):
+    photo = Photos.query.filter_by(project_id=project.id).first()
+    if photo:
+        project.cover_url = photo.photo_url
+        db.session.commit()
