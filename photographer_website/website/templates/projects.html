@@ -2,12 +2,9 @@
 
 {% load static %}
 
-
 {% block head %}
     <title>Projects</title>
-    <link rel="stylesheet" href="{% static 'css/projects_styles.css' %}" type="text/css"/>
 {% endblock %}
-
 
 {% block viewport %}
 
@@ -19,12 +16,11 @@
             <input type="text" class="search-input"
                    placeholder="Search..." onkeydown="handleKeyPress(event)">
         </div>
-
-        <div class="carousel">
-            <div class="carousel-container">
+        <div class="carousel_container">
+            <div class="carousel">
                 {% for item in list %}
                 <div class="carousel-item">
-                    <img src="{{ item.photo.url }}">
+                    <a href="/projects/{{ item.name|cut:" "|lower }}"><img src="{{ item.photo.url }}">
                     <div>{{ item.name }}</div>
                     <div>{{ item.city }} {{ item.season }} {{ item.year }}</div>
                 </div>
@@ -32,5 +28,5 @@
             </div>
         </div>
 
-        <!-- TO BE BLOCKED OUT (END)-->
+        <script src="{% static 'js/projects.js' %}"></script>
 {% endblock %}

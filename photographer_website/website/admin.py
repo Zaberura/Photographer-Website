@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Projects, Tags, PhotoSource
+from .models import Project, Tag, PhotoSource
 
 
-admin.site.register(Projects)
-admin.site.register(Tags)
+admin.site.register(Project)
+admin.site.register(Tag)
 admin.site.register(PhotoSource)

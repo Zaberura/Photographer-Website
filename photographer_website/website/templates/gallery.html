@@ -4,20 +4,40 @@
 
 {% block head %}
     <title>Gallery</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/gallery_styles.css' %}"/>
-{% endblock %}
-
-{% block navbar %}
 {% endblock %}
 
 {% block viewport %}
-    <div id="photo_frame">
 
-               <div class="slider">
-                   <div id="left"></div>
-                   <div id="right"></div>
-               </div>
+    <div id="container">
 
-               <img style="height: 100%;" src="{% static 'photos/isayas.jpg' %}">
-           </div>
+        <div id="slider">
+            <div id="slider_left"></div>
+            <div id="slider_right"></div>
+        </div>
+
+        <div id="photo_container">
+            {% for item in list %}
+                {% if item.photo.url == None %}
+                    <img style="height: 100%;" id="image{{ forloop.counter }}" class="disabled" src="{{ item }}">
+                {% else %}
+                    <img style="height: 100%;" id="image{{ forloop.counter }}" class="disabled" src="{{ item.photo.url }}">
+                    {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="print_download_button">
+            <a href="#">
+                <div>DOWNLOAD</div>
+            </a>
+            <div>&nbsp|&nbsp</div>
+            <a href="#">
+                <div>PRINT</div>
+            </a>
+        </div>
+
+    </div>
+
+<script> urls_length = {{ list|length }} ; </script>
+<script src="{% static 'js/gallery.js' %}"></script>
+
 {% endblock %}
