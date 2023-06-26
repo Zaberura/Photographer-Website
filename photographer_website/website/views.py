@@ -1,7 +1,11 @@
+import json
+
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
 from . import models
 from django.conf import settings
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -29,3 +33,16 @@ def photo_projects(request, project: str):
         photos = [settings.MEDIA_URL + photo for photo in all_photos]
 
     return render(request, "gallery.html", {"list": photos})
+
+
+def contacts(request: HttpRequest):
+    if request.method == "POST":
+        data = json.loads(request.body)
+
+        subject = "Message from my own site"
+        message = f"PHONE : {data['phone']}\nNAME : {data['name']}\nEMAIL : {data['email']}\n\n MESSAGE:\n\t{data['message']}"
+
+        recipient = [recipient.email for recipient in models.Recipient.objects.all()]
+        send_mail(subject, message, settings.EMAIL_HOST_USER, recipient)
+        return HttpResponse("OK")
+    return render(request, "contact.html")

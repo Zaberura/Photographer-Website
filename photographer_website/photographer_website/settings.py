@@ -148,3 +148,13 @@ AWS_LOCATION = 'media'  # the folder name within the bucket to store media files
 # Set the static and media URLs
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+
+# Set the email configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # the port number for your email host
+EMAIL_USE_TLS = True  # whether to use a secure TLS connection
+
+EMAIL_HOST_USER = env.str("EMAIL_USERNAME")  # your email address
+EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD")  # your email password or an application-specific password

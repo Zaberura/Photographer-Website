@@ -11,15 +11,18 @@
                 <div class="top">
                     <div class="form_wrapper">
                         <div class="form_caption">CONTACT</div>
-                        <form class="contact_from">
-                            <input type="text" id="name_input" placeholder="Name">
-                            <input type="email" id="email_input" placeholder="Email">
-                            <input type="tel" id="phone_input" placeholder="Phone">
-                        </form>
-                    </div>
-                    <div class="msg_wrapper">
-                        <textarea name="message" form="contact_from"
-                            id="msg_text" cols="30" rows="11" placeholder="Message"></textarea>
+                        <div class="contact_form" >
+                            <div class="inputs_wrapper">
+                                {% csrf_token %}
+                                <input required type="text" id="name_input" name="name_input" placeholder="Name">
+                                <input required type="email" id="email_input" name="email_input" placeholder="Email">
+                                <input required type="tel" id="phone_input" name="phone_input" placeholder="Phone">
+                                <button type="submit" id="submit-btn">Send</button>
+                            </div>
+                            <div>
+                                <textarea required name="message" id="msg_text" cols="30" rows="11" placeholder="Message"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="bot">
@@ -30,10 +33,12 @@
                         <p>EMAIL
                             <a href="#">ZABERURA@GMAIL.COM</a>
                         </p>
-                        <a href="#"><img src="{% static 'src/instagram.png' %}"></a>
-                        <a href="#"><img src="{% static 'src/behance.png' %}"></a>
-                        <a href="#"><img src="{% static 'src/youtube.png' %}"></a>
+                        <a href="{{ instagram }}"><img src="{% static 'src/instagram.png' %}"></a>
+                        <a href="{{ behance }}"><img src="{% static 'src/behance.png' %}"></a>
+                        <a href="{{ youtube }}"><img src="{% static 'src/youtube.png' %}"></a>
                     </div>
                 </div>
             </div>
+
+<script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}

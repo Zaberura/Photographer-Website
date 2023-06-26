@@ -47,6 +47,15 @@ class Tag(models.Model):
     name = models.CharField(max_length=255, null=False)
 
 
+class Recipient(models.Model):
+    email = models.CharField(max_length=255, null=False)
+
+
+class DynamicParam(models.Model):
+    name = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)
+
+
 class PhotoSource(models.Model):
     photo = models.ImageField(storage=S3Boto3Storage(), upload_to=get_photo_upload_path, null=True, blank=True)
     is_available = models.BooleanField(default=True)
