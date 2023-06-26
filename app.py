@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from models import *
 
 app = Flask(__name__)
@@ -29,9 +29,19 @@ def project_name(project_name):
     return render_template('gallery.html', photos=get_project_photos(project_name))
 
 
-@app.route('/contact')
+@app.route('/contact', methods=['POST', 'GET'])
 def contact():
-    return render_template('contact.html')
+    if request.method == 'GET':
+        return render_template('contact.html')
+
+    elif request.method == 'POST':
+        return ('Чудово', 200)
+
+
+        # TODO sth with db
+        # tmp = request.form
+        # print("АХТУНГ АХТУНГ")
+        # print(tmp)
 
 
 @app.route('/admin', methods=['POST', 'GET'])
@@ -48,7 +58,6 @@ def admin():
         add_photo(photo_url, project_name)
 
         return redirect('/admin')
-
 
 # RUN
 
