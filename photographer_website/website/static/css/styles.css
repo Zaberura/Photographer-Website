@@ -1,0 +1,289 @@
+head,
+body {
+
+    min-height: 93vh;
+    background-color: #FDFDFB;
+
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    color: #353535;
+}
+
+a {
+    text-decoration: none;
+    color: #353535;
+}
+
+a div,
+p {
+    text-decoration: none;
+    color: #353535;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 97vh;
+}
+
+/* VIEWPORT */
+#viewport {
+    flex: 9 0 60vw;
+    min-width: 500px;
+    margin: auto 3.4em auto;
+    padding: 4em 0 13.8em;
+}
+
+/* NAVIGATION BAR */
+#navbar {
+    margin-top: 12em;
+    margin-bottom: 4em;
+    margin-right: 0.65em;
+    margin-left: 4em;
+    flex-grow: 1;
+    min-width: 100px;
+
+}
+
+#navbar a {
+    display: block;
+    margin-top: 1.6em;
+    font-size: 0.8em;
+    letter-spacing: 0.05em;
+    color: #bbbbbb;
+
+}
+
+.nav_active {
+    color: #353535 !important;
+}
+
+#logo {
+    margin-bottom: 2.8em;
+    font-size: 0.9em;
+    font-weight: 100;
+    letter-spacing: 0.13em;
+    color: #353535;
+}
+
+#flag {
+    margin-left: -1.5px;
+    margin-top: 1.8em;
+    width: 30px;
+}
+
+
+/* GALLERY */
+#container {
+    height: 70vh;
+    max-width: 72vw;
+    padding: 0.9em;
+    display: inline-block
+}
+
+#photo_container {
+    position: relative;
+    margin-left: 2em;
+    height: 100%;
+}
+
+#photo_container img {
+    position: absolute;
+    height: 100%;
+    transition: opacity 0.21s ease-in-out;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+#slider {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    z-index: 200;
+}
+
+#slider #slider_left {
+    width: 50%;
+    cursor: w-resize
+}
+
+#slider #slider_right {
+    width: 50%;
+    cursor: e-resize;
+}
+
+.print_download_button {
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    opacity: 0.6;
+    font-size: 0.7em;
+    font-weight: 100;
+    letter-spacing: 0.09em;
+
+    display: none;
+}
+
+
+/* CONTACT */
+#current_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact_wrapper {}
+
+.top {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.form_caption {
+    text-align: center;
+    margin-top: 0.9em;
+    margin-bottom: 1.3em;
+    font-weight: 100;
+    font-size: 0.95em;
+}
+
+.contact_form {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.inputs_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact_form input {
+    border: none;
+    border-bottom: 1px solid;
+    margin-bottom: 1.5em;
+    display: inline;
+}
+
+#submit-btn {
+
+}
+
+.contact_form input:focus {
+    outline: none;
+}
+
+#msg_text {
+    margin-left: 5vw;
+    background: rgba(255, 232, 235, 0.64);
+    padding: 1.5vh 0.6vw 0 0.7vw;
+}
+
+#msg_text:focus {
+    outline: none;
+}
+
+.bot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.author_contact_info_grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 30px 30px 30px;
+    grid-gap: 1vh;
+    place-items: center;
+    column-gap: 1vw;
+    margin: 0;
+}
+
+.author_contact_info_grid p {
+    font-size: 0.7em;
+}
+
+.author_contact_info_grid img {
+    object-fit: cover;
+    width: 25px;
+    height: 25px;
+}
+
+
+/* PROJECTS */
+
+.carousel_container {
+    margin: 3.5em 2em 0;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.carousel_container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 90px;
+}
+
+.carousel-item img {
+    margin-bottom: 1em;
+    width: 100%;
+    height: auto;
+}
+
+.carousel-item div {
+    text-align: center;
+    margin-left: -0.3em;
+    margin-bottom: 0.3em;
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.search-container {
+    position: fixed;
+    top: 1.3em;
+    right: 5.4em;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    font-size: 0.8em;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-right: 8px;
+    background: #fff4f3;
+}
+
+/* ПОПА */

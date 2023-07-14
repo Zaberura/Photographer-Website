@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <title>Projects</title>
+{% endblock %}
+
+{% block viewport %}
+
+</head>
+<body>
+
+        <!-- TO BE BLOCKED OUT -->
+        <div class="search-container">
+            <input type="text" class="search-input"
+                   placeholder="Search..." onkeydown="handleKeyPress(event)">
+        </div>
+        <div class="carousel_container">
+            <div class="carousel">
+                {% for item in list %}
+                <div class="carousel-item">
+                    <a href="/projects/{{ item.name|cut:" "|lower }}"><img src="{{ item.photo.url }}">
+                    <div>{{ item.name }}</div>
+                    <div>{{ item.city }} {{ item.season }} {{ item.year }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script src="{% static 'js/projects.js' %}"></script>
+{% endblock %}

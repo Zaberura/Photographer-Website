@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css"/>
+    {% block head %} {% endblock %}
+
+</head>
+<body>
+   <div id="wrapper">
+
+       <div id="navbar-container">
+           <div id="navbar">
+               <a href="/">
+                   <div id="logo">ZABEREZHNYI YURII</div>
+               </a>
+
+               <a href="/" class="nav_item"> gallery </a>
+               <a href="/projects" class="nav_item">
+                   projects
+               </a>
+               <a href="/contact" class="nav_item">
+                   contact
+               </a>
+
+               <a><img id="flag" src="{% static 'src/flag_ua.png' %}"></a>
+
+           </div>
+       </div>
+       <div id="viewport">
+           {% block viewport %} {% endblock %}
+
+       </div>
+   </div>
+
+   <script src="{% static 'js/scripts.js' %}"></script>
+
+</body>
+</html>

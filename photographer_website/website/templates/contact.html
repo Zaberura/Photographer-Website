@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <title>Contact</title>
+{% endblock %}
+
+{% block viewport %}
+    <div class="contact_wrapper">
+                <div class="top">
+                    <div class="form_wrapper">
+                        <div class="form_caption">CONTACT</div>
+                        <div class="contact_form" >
+                            <div class="inputs_wrapper">
+                                {% csrf_token %}
+                                <input required type="text" id="name_input" name="name_input" placeholder="Name">
+                                <input required type="email" id="email_input" name="email_input" placeholder="Email">
+                                <input required type="tel" id="phone_input" name="phone_input" placeholder="Phone">
+                                <button type="submit" id="submit-btn">Send</button>
+                            </div>
+                            <div>
+                                <textarea required name="message" id="msg_text" cols="30" rows="11" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bot">
+                    <div class="author_contact_info_grid">
+                        <p>PHONE
+                            <a href="#">+49 152 51982856</a>
+                        </p>
+                        <p>EMAIL
+                            <a href="#">ZABERURA@GMAIL.COM</a>
+                        </p>
+                        <a href="{{ instagram }}"><img src="{% static 'src/instagram.png' %}"></a>
+                        <a href="{{ behance }}"><img src="{% static 'src/behance.png' %}"></a>
+                        <a href="{{ youtube }}"><img src="{% static 'src/youtube.png' %}"></a>
+                    </div>
+                </div>
+            </div>
+
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}
