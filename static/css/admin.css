@@ -1,0 +1,24 @@
+.admin_input {
+    margin-left: 6vw;
+}
+
+.input_wrapper {
+
+}
+
+.admin_input div {
+    margin-right: 2em;
+}
+
+.admin_input input {
+    display: block;
+    height: 2em;
+    margin: 0 0 2em;
+}
+
+#submit_button {
+    font-size: 1.3em;
+
+}
+
+

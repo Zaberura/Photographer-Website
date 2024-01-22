@@ -15,18 +15,10 @@
 
         <div id="photo_container">
             {% for photo in photos %}
-                <img style="height: 100%;" id="image{{ loop.index }}" class="disabled" src="{{ photo.photo_url }}">
-            {% endfor %}
-        </div>
 
-        <div class="print_download_button">
-            <a href="#">
-                <div>DOWNLOAD</div>
-            </a>
-            <div>&nbsp|&nbsp</div>
-            <a href="#">
-                <div>PRINT</div>
-            </a>
+                <img class="disabled" id="image{{ loop.index }}" src="{{ photo.photo_url }}">
+
+            {% endfor %}
         </div>
 
     </div>

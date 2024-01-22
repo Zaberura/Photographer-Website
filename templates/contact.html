@@ -5,33 +5,39 @@
 {% endblock %}
 
 {% block viewport %}
+
     <div class="contact_wrapper">
-                <div class="top">
-                    <div class="form_wrapper">
-                        <div class="form_caption">CONTACT</div>
-                        <form class="contact_from">
-                            <input type="text" id="name_input" placeholder="Name">
-                            <input type="email" id="email_input" placeholder="Email">
-                            <input type="tel" id="phone_input" placeholder="Phone">
-                        </form>
+        <div class="top">
+            <div class="form_wrapper">
+                <div class="form_caption">CONTACT</div>
+                <form class="contact_form" name="contact_form" action = "/contact" method = "POST">
+                    <div class="inputs_wrapper">
+                        <input required type="text" id="name_input" name="name_input" placeholder="Name">
+                        <input required type="email" id="email_input" name="email_input" placeholder="Email">
+                        <input required type="tel" id="phone_input" name="phone_input" placeholder="Phone">
+                        <input type="submit" id="submit-btn">
                     </div>
-                    <div class="msg_wrapper">
-                        <textarea name="message" form="contact_from"
-                            id="msg_text" cols="30" rows="11" placeholder="Message"></textarea>
+                    <div>
+                        <textarea required name="message" id="msg_text" cols="30" rows="11" placeholder="Message"></textarea>
                     </div>
-                </div>
-                <div class="bot">
-                    <div class="author_contact_info_grid">
-                        <p>PHONE
-                            <a href="#">+49 152 51982856</a>
-                        </p>
-                        <p>EMAIL
-                            <a href="#">ZABERURA@GMAIL.COM</a>
-                        </p>
-                        <a href="#"><img src="{{ url_for('static', filename='src/instagram.png') }}"></a>
-                        <a href="#"><img src="{{ url_for('static', filename='src/behance.png') }}"></a>
-                        <a href="#"><img src="{{ url_for('static', filename='src/youtube.png') }}"></a>
-                    </div>
-                </div>
+                </form>
             </div>
+        </div>
+        <div class="bot">
+            <div class="author_contact_info_grid">
+                <p>PHONE
+                    <a href="#">+49 152 51982856</a>
+                </p>
+                <p>EMAIL
+                    <a href="#">ZABERURA@GMAIL.COM</a>
+                </p>
+                <a href="#"><img src="{{ url_for('static', filename='src/instagram.png') }}"></a>
+                <a href="#"><img src="{{ url_for('static', filename='src/behance.png') }}"></a>
+                <a href="#"><img src="{{ url_for('static', filename='src/youtube.png') }}"></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+
 {% endblock %}

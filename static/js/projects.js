@@ -4,7 +4,7 @@ const carousel = document.querySelector(".carousel_container");
 const carouselContainer = carousel.querySelector(".carousel");
 const carouselItems = carousel.querySelectorAll(".carousel-item");
 
-if (carouselItems.length > 7){
+if (carouselItems.length > 5){
 
 
     const cloneItems = Array.from(carouselItems).map(item => item.cloneNode(true));
@@ -13,7 +13,6 @@ if (carouselItems.length > 7){
 
     carousel.addEventListener('scroll', () => {
       const scrollPosition = carousel.scrollLeft;
-      const itemWidth = carouselItems[0].offsetWidth + parseInt(getComputedStyle(carouselItems[0]).marginRight);
       const totalWidth = carouselContainer.offsetWidth;
 
       if (scrollPosition + carousel.offsetWidth >= carousel.scrollWidth) {

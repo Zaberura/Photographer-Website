@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block viewport %}
+
+    <form class="admin_input" action = "/admin" method = "POST">
+
+        <div class="input_wrapper">
+            <div>
+                <p>Enter Photo data:</p>
+                <input type = "text" name = "photo_url", placeholder="Photo Url"/>
+            </div>
+            <div>
+                <p>Enter Project data:</p>
+                <input type = "text" name = "project_name", placeholder="Project name"/>
+                <input type = "text" name = "season", placeholder="Project season"/>
+                <input type = "text" name = "year", placeholder="Project year"/>
+                <input type = "text" name = "city", placeholder="Project city"/>
+            </div>
+        </div>
+
+        <input id="submit_button" type = "submit" value = "Proceed" />
+
+    </form>
+
+{% endblock %}

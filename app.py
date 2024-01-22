@@ -25,32 +25,43 @@ def projects():
 
 @app.route('/projects/<path:project_name>')
 def project_name(project_name):
-
     return render_template('gallery.html', photos=get_project_photos(project_name))
 
 
-@app.route('/contact')
+@app.route('/contact', methods=['POST', 'GET'])
 def contact():
-    return render_template('contact.html')
+    if request.method == 'GET':
+        return render_template('contact.html')
+
+    elif request.method == 'POST':
+
+        info = request.form
+        print(info['name_input'])
+        print('ALAAAAARm')
+        return render_template('contact.html')
 
 
 @app.route('/admin', methods=['POST', 'GET'])
 def admin():
     if request.method == 'GET':
-        return render_template('admin.html')
+        return render_template('admin/admin.html')
 
     elif request.method == 'POST':
 
-        project_name = request.form['project']
-        add_project(project_name)
-
-        photo_url = request.form['photo_url']
-        add_photo(photo_url, project_name)
+        user_input = request.form
+        add_project(user_input['project_name'], season=user_input['season'],
+                    year=user_input['year'], city=user_input['city'])
+        add_photo(user_input['photo_url'], user_input['project_name'])
 
         return redirect('/admin')
 
 
 # RUN
 
+# async def run_app():
+#
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+

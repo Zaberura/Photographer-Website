@@ -82,8 +82,10 @@ def add_project(name, **kwargs):
 def add_photo(url, project_name=None, **kwargs):
 
     allowed_kwargs = ['season', 'year', 'city', 'country']
+    print('url passed point 2')
 
     if not url == '':
+        print('url passed point 2')
 
         photo = Photos.query.filter_by(photo_url=url).first()
 

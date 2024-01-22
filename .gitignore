@@ -1,0 +1,4 @@
+instance/
+telegram_bot/
+bot.py
+models.py

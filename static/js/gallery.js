@@ -1,20 +1,46 @@
 // Copy size of slider
 
+
 function copyDimensions() {
-  var sourceElement = document.getElementById("image1");
+  var sourceElement = document.getElementById("container");
   var targetElement = document.getElementById("slider");
 
-  targetElement.style.width = sourceElement.offsetWidth * 1.16 + "px";
-  targetElement.style.height = sourceElement.offsetHeight * 1.16 + "px";
+  targetElement.style.width = sourceElement.offsetWidth + "px";
+  targetElement.style.height = sourceElement.offsetHeight + "px";
+
+  var rect = sourceElement.getBoundingClientRect();
+  var xOffset = sourceElement.offsetWidth;
+  var yOffset = sourceElement.offsetHeight;
+
+
 }
 
+//Center Images
 
 
-document.getElementById("image1").classList.remove('disabled');
+function centerElements() {
+    for (var i = 1; i <= urls_length; i++) {
+        var sourceElement = document.getElementById("photo_container");
+        var targetElement = document.getElementById("image" + i);
+
+        var offsetX = (sourceElement.offsetWidth - targetElement.offsetWidth) / 2;
+        var offsetY = (sourceElement.offsetHeight - targetElement.offsetHeight) / 2;
+
+        targetElement.style.left = offsetX + "px";
+        targetElement.style.top = offsetY + "px";
+    }
+}
+
+centerElements();
 
 //Image slider logics
 
+
 imageIndex = 1;
+
+document.getElementById("image1").classList.remove('disabled');
+
+
 
 function next_img() {
 
@@ -35,6 +61,7 @@ function prev_img() {
 }
 
 // Set Event Listeners on clicks 'n' keys
+
 
 document.getElementById("slider_right").addEventListener("click", next_img);
 document.getElementById("slider_left").addEventListener("click", prev_img);
