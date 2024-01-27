@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-
 # Initialize database
 db = SQLAlchemy()
 
@@ -20,6 +19,12 @@ class Projects(db.Model):
     def __repr__(self):
         return '<project added, id: %r>' % self.name
 
+    def __str__(self):
+        return self.name
+
+    def to_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Photos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,6 +37,9 @@ class Photos(db.Model):
     def __repr__(self):
         return '<photo added, id: %r>' % self.id
 
+    def to_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Tags(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,6 +48,9 @@ class Tags(db.Model):
 
     def __repr__(self):
         return '<project added, id: %r>' % self.name
+
+    def to_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 # Logics
@@ -58,7 +69,6 @@ def get_project_photos(project_name):
 
 
 def add_project(name, **kwargs):
-
     allowed_kwargs = ['season', 'year', 'city', 'country', 'cover_id']
 
     if not name == '':
@@ -80,7 +90,6 @@ def add_project(name, **kwargs):
 
 
 def add_photo(url, project_name=None, **kwargs):
-
     allowed_kwargs = ['season', 'year', 'city', 'country']
     print('url passed point 2')
 

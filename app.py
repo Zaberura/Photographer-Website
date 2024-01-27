@@ -1,4 +1,8 @@
-from flask import Flask, render_template, request, redirect
+import asyncio
+
+from flask import Flask, render_template, request, redirect, jsonify
+
+from bot import run_bot
 from models import *
 
 app = Flask(__name__)
@@ -9,23 +13,36 @@ db.init_app(app)
 
 # ROUTES
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # if request.method == 'GET':
+    #     return render_template('gallery.html', photos=get_all_photos())
+    # elif request.method == 'POST':
+    #     return redirect('/')
     if request.method == 'GET':
-        return render_template('gallery.html', photos=get_all_photos())
-    elif request.method == 'POST':
-        return redirect('/')
+        photos = get_all_photos()
+        photos_link = {"data": [photo.photo_url for photo in photos]}
+
+        return jsonify(photos_link)
 
 
 @app.route('/projects')
 def projects():
     all_projects = get_all_projects()
-    return render_template('projects.html', projects=all_projects)
+
+    _projects = [project.to_dict() for project in all_projects]
+
+    return jsonify({"data": _projects})
+    # return render_template('projects.html', projects=all_projects)
 
 
 @app.route('/projects/<path:project_name>')
 def project_name(project_name):
-    return render_template('gallery.html', photos=get_project_photos(project_name))
+    _projects = [project.to_dict() for project in get_project_photos(project_name)]
+
+    return jsonify(_projects)
+    # return render_template('gallery.html', photos=get_project_photos(project_name))
 
 
 @app.route('/contact', methods=['POST', 'GET'])
@@ -61,7 +78,12 @@ def admin():
 # async def run_app():
 #
 
+async def start_app():
+    loop = asyncio.get_event_loop()
+
+    loop.run_until_complete(run_bot())
+
 
 if __name__ == '__main__':
+    asyncio.create_task(start_app)
     app.run(debug=True)
-
