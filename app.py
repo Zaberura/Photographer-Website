@@ -1,12 +1,11 @@
-import asyncio
-
 from flask import Flask, render_template, request, redirect, jsonify
-
-from bot import run_bot
+from flask_cors import CORS
 from models import *
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///photos.db'
+
 
 db.init_app(app)
 
