@@ -20,28 +20,30 @@ def index():
     #     return render_template('gallery.html', photos=get_all_photos())
     # elif request.method == 'POST':
     #     return redirect('/')
+
     if request.method == 'GET':
         photos = get_all_photos()
         photos_link = {"data": [photo.photo_url for photo in photos]}
-
         return jsonify(photos_link)
 
 
 @app.route('/projects')
 def projects():
-    all_projects = get_all_projects()
+    if request.method == 'GET':
 
-    _projects = [project.to_dict() for project in all_projects]
+        all_projects = get_all_projects()
+        _projects = [project.to_dict() for project in all_projects]
+        return jsonify({"data": _projects})
 
-    return jsonify({"data": _projects})
     # return render_template('projects.html', projects=all_projects)
 
 
-@app.route('/projects/<path:project_name>')
-def project_name(project_name):
-    _projects = [project.to_dict() for project in get_project_photos(project_name)]
+@app.route('/projects/<path:_project_name>')
+def project_name(_project_name):
 
-    return jsonify(_projects)
+    project_photos = [project.to_dict() for project in get_project_photos(_project_name)]
+    return jsonify({'data': project_photos})
+
     # return render_template('gallery.html', photos=get_project_photos(project_name))
 
 
@@ -73,17 +75,5 @@ def admin():
         return redirect('/admin')
 
 
-# RUN
-
-# async def run_app():
-#
-
-async def start_app():
-    loop = asyncio.get_event_loop()
-
-    loop.run_until_complete(run_bot())
-
-
 if __name__ == '__main__':
-    asyncio.create_task(start_app)
     app.run(debug=True)
